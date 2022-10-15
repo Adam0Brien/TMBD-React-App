@@ -29,12 +29,23 @@ import {createRoot} from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MovieDetailsPage from "./pages/movieDetailsPage";
+import favouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
+import {Link} from 'react-router-dom'
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/movies/favourites">Favourites</Link>
+        </li>
+      </ul>
       <Routes>
-        <Route path="/movies/:id" element={<MovieDetailsPage />} />
+        <Route exact path="/movies/favourites" element={<favouriteMoviesPage />} />
+        <Route path="/movies/:id" element={<favouriteMoviePage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />
       </Routes>

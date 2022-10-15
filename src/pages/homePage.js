@@ -57,6 +57,14 @@ const handleChange = (type, value) => {
 };
 
 
+const addToFavourites = (movieId) => {
+  const updatedMovies = movies.map((m) =>
+    m.id === movieId ? { ...m, favourite: true } : m
+  );
+  setMovies(updatedMovies);
+};
+
+
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/discover/movie?api_key="+key+"&language=en-US&include_adult=false&page=1"
@@ -86,7 +94,7 @@ const handleChange = (type, value) => {
       genreFilter={genreFilter}
     />
         </Grid>
-        <MovieList movies={displayedMovies} />
+        <MovieList movies={displayedMovies} selectFavourite={addToFavourites} />
       </Grid>
     </Grid>
   );
