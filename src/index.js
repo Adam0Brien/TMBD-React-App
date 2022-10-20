@@ -30,7 +30,7 @@ import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MovieDetailsPage from "./pages/movieDetailsPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
-import UpcommingMoviesPage from './pages/upcommingMoviesPage'; //new
+import UpcommingMoviesPage from './pages/UpcommingMoviesPage'; //new
 import {Link} from 'react-router-dom'
 import MovieReviewPage from "./pages/movieReviewPage";
 
@@ -39,7 +39,7 @@ const App = () => {
     <BrowserRouter>
      <SiteHeader />      {/* New Header  */}
       <Routes>
-        <Route exact path="/movies/upcomming" element={<upcommingMoviesPage />} />
+        <Route exact path="/movies/upcomming" element={<UpcommingMoviesPage />} />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
         <Route path="/" element={<HomePage />} />

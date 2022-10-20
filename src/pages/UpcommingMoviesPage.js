@@ -4,7 +4,7 @@ import { getUpcommingMovies } from "../api/tmdb-api";
 import { getMovies } from "../api/tmdb-api";
 
 
-const upcommingMoviesPage = (props) => {
+const UpcommingMoviesPage = (props) => {
   const [movies, setMovies] = useState([]);
   const favourites = movies.filter((m) => m.favourite);
   localStorage.setItem("favourites", JSON.stringify(favourites));
@@ -17,7 +17,7 @@ const upcommingMoviesPage = (props) => {
   };
 
   useEffect(() => {
-    getMovies().then(movies => {
+    getUpcommingMovies().then(movies => {
       setMovies(movies);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,4 +31,4 @@ const upcommingMoviesPage = (props) => {
     />
   );
 };
-export default upcommingMoviesPage;
+export default UpcommingMoviesPage;
