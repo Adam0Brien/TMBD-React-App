@@ -23,7 +23,7 @@
 // const rootElement = createRoot( document.getElementById("root") )
 // rootElement.render(<App /> );
 
-
+import SiteHeader from './components/siteHeader'
 import React from "react";
 import {createRoot} from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
@@ -36,14 +36,7 @@ import MovieReviewPage from "./pages/movieReviewPage";
 const App = () => {
   return (
     <BrowserRouter>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/movies/favourites">Favourites</Link>
-        </li>
-      </ul>
+     <SiteHeader />      {/* New Header  */}
       <Routes>
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
