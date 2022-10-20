@@ -16,8 +16,6 @@ import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 
 
-
-
 export default function MovieCard(props) {
   const movie = props.movie;
 
