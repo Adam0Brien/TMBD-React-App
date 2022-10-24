@@ -19,7 +19,7 @@ import { MoviesContext } from "../../contexts/moviesContext";
 
 
 
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, action }) {
   const { favourites, addToFavourites } = useContext(MoviesContext);
  
    if (favourites.find((id) => id === movie.id)) {
