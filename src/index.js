@@ -1,28 +1,3 @@
-// import React from "react";
-// import {createRoot} from "react-dom/client";
-// import HomePage from "./pages/homePage";
-// import sample from './stories/sampleData'
-// import MovieDetailsPage from './pages/movieDetailsPage'
-
-
-// const movies = [sample, sample, sample, sample, sample, sample, sample];
-
-// const images = [
-//   "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
-//   "/v1QQKq8M0fWxMgSdGOX1aCv8qMB.jpg",
-//   "/2iGN0aKHJYD0xQydlfuCUAcgNbO.jpg",
-//   "/rjBwhsOzHKUw2NIOrE7aMqjfe6s.jpg",
-// ]
-
-// const App = () => {
-//   return (
-//       <MovieDetailsPage movie={sample} images={images} />
-//       );
-// };
-
-// const rootElement = createRoot( document.getElementById("root") )
-// rootElement.render(<App /> );
-
 import SiteHeader from './components/siteHeader'
 import React from "react";
 import {createRoot} from "react-dom/client";
@@ -35,29 +10,32 @@ import {Link} from 'react-router-dom'
 import MovieReviewPage from "./pages/movieReviewPage";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
-
+import MoviesContextProvider from "./contexts/moviesContext";
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-     <SiteHeader />      {/* New Header  */}
-      <Routes>
+      <BrowserRouter>
+        <SiteHeader />
+        <MoviesContextProvider>
+            <Routes>
         <Route exact path="/movies/upcomming" element={<UpcommingMoviesPage />} />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />
         <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
-      </Routes>
-    </BrowserRouter>
-    <ReactQueryDevtools initialIsOpen={false} />
+            </Routes>
+        </MoviesContextProvider>
+      </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };
 
-const rootElement = createRoot( document.getElementById("root") )
-rootElement.render(<App /> );
+
+const rootElement = createRoot(document.getElementById("root"));
+rootElement.render(<App />);
 
 const queryClient = new QueryClient({
   defaultOptions: {
