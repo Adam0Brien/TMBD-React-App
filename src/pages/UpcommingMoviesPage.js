@@ -5,8 +5,9 @@ import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
 
-const HomePage = (props) => {
+const UpcommingMoviesPage = (props) => {
 
   const {  data, error, isLoading, isError }  = useQuery('upcomming', getUpcommingMovies)
 
@@ -30,15 +31,13 @@ const HomePage = (props) => {
       movies={movies}
       action={(movie) => {
         return (
-        //<AddToFavouritesIcon movie={movie} />
         <>
-            <AddToFavouritesIcon movie={movie} />
-            <PlaylistAddIcon movie={movie} />
-          </>
+            <AddToMustWatchIcon movie={movie} />
+        </>
   )}}
     />
 );
 };
 
 
-export default HomePage;
+export default UpcommingMoviesPage;

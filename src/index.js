@@ -13,7 +13,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 
-import mustWatchMoviesPage from "./pages/mustWatchMoviesPage"; // NEW
+import MustWatchMoviesPage from "./pages/mustWatchMoviesPage"; // NEW
 
 
 
@@ -25,10 +25,11 @@ const App = () => {
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
-            <Routes>
+        <Routes>
         <Route exact path="/movies/upcomming" element={<UpcommingMoviesPage />} />
+        <Route exact path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
-        <Route exact path="/movies/mustwatch" element={<mustWatchMoviesPage />} />
+        
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />

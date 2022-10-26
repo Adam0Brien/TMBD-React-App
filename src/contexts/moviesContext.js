@@ -19,7 +19,7 @@ const MoviesContextProvider = (props) => {
     if (!mustWatch.includes(movie.id)) {
       newMustWatch.push(movie.id);
     }
-    setFavourites(newMustWatch);
+    setMustWatch(newMustWatch);
   };
 
   // We will use this function in a later section
@@ -40,6 +40,7 @@ const MoviesContextProvider = (props) => {
         addToFavourites,
         removeFromFavourites,
         addReview,
+        mustWatch,
         addToMustWatch,
       }}
     >

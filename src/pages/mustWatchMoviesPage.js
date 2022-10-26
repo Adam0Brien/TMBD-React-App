@@ -6,6 +6,7 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner'
 //import RemoveFromFavouritesIcon from "../components/cardIcons/removeFromFavourites";
 import WriteReviewIcon from "../components/cardIcons/writeReview";
+//import AddToMustWatch from "../components/cardIcons/addToMustWatch";
 
 
 
@@ -51,4 +52,15 @@ const MustWatchMoviesPage = () => {
   );
 };
 
+
+// return (
+//     <PageTemplate
+//       title="Discover Movies"
+//       movies={movies}
+//       action={(movie) => {
+//         return <AddToMustWatch movie={movie} />
+//       }}
+//     />
+// );
+// };
 export default MustWatchMoviesPage;
