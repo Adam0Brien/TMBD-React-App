@@ -26,6 +26,7 @@ const SiteHeader = ({ history }) => {
   const menuOptions = [
     { label: "Home", path: "/" },
     { label: "Upcomming", path: "/movies/upcomming" },
+    { label: "Trending", path: "/movies/trending" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
     { label: "Actors", path: "/actors" },
@@ -41,17 +42,18 @@ const SiteHeader = ({ history }) => {
 
   return (
     <>
-      <AppBar position="fixed" color="secondary">
+      <AppBar position="fixed" style={{ background: '#292828' }}>
         <Toolbar>
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
-            Movies App
+            All Movies
           </Typography>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you can watch!
+          "No more half-measures!"
           </Typography>
             {isMobile ? (
               <>
-                <IconButton
+                <IconButton 
+                
                   aria-label="menu"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
@@ -77,7 +79,7 @@ const SiteHeader = ({ history }) => {
                 >
                   {menuOptions.map((opt) => (
                     <MenuItem
-                      key={opt.label}
+                      key={opt.label} 
                       onClick={() => handleMenuSelect(opt.path)}
                     >
                       {opt.label}

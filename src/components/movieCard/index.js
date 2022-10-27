@@ -48,30 +48,36 @@ export default function MovieCard({ movie, action }) {
 
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 , backgroundColor: "#292828",border: '3px solid rgba(255,255,255,1)' }}>
           <CardHeader
         avatar={
           movie.favourite ? (
-            <Avatar sx={{ backgroundColor: 'red' }}>
+            <Avatar sx={
+              { backgroundColor: 'red' }
+              }>
               <FavoriteIcon />
             </Avatar>
           ) : null
         }
         title={
-          <Typography variant="h5" component="p">
+          <Typography variant="h5" component="p" sx={{
+            color: "white"
+          }}>
             {movie.title}{" "}
           </Typography>
         }
       />
       <CardMedia
-        sx={{ height: 500 }}
+        sx={{ height: 500 ,backgroundColor: "black"}}
         image={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
             : img
         }
       />
-      <CardContent>
+      <CardContent sx={{
+            color: "white"
+          }}>
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
@@ -90,7 +96,9 @@ export default function MovieCard({ movie, action }) {
       <CardActions disableSpacing>
       {action(movie)}
         <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
+          <Button variant="outlined" size="medium" sx={{
+            color: "white"
+          }}>
             More Info ...
           </Button>
         </Link>

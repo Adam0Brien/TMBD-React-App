@@ -25,19 +25,29 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <>
     
-      <Typography variant="h5" component="h3">
+    <Paper sx={{
+            background: "#292828"
+          }}>
+
+      <>
+      <Typography variant="h5" component="h3" sx={{
+            color: "slategrey"
+          }}>
         Overview
       </Typography>
 
-      <Typography variant="h6" component="p">
+      <Typography variant="h6" component="p" sx={{
+            color: "grey"
+          }}>
         {movie.overview}
       </Typography>
 
       <Paper 
         component="ul" 
-        sx={root}
+        sx={{
+          background: "#292828"
+        }}
       >
         
         <li>
@@ -45,44 +55,62 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         </li>
         {movie.genres.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} sx={chip} />
+            <Chip label={g.name} sx={{
+            background: "slategrey"
+          }}/>
           </li>
         ))}
       </Paper>
-      <Paper component="ul" sx={root}>
+      <Paper component="ul" sx={{
+            background: "#292828"
+          }}>
       
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} sx={{
+            background: "slategrey"
+          }}/>
         <Chip
           icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
+          label={`${movie.revenue.toLocaleString()}`} 
+          sx={{
+            background: "slategrey"
+          }}
         />
         <Chip
           icon={<StarRate />}
           label={`${movie.vote_average} (${movie.vote_count}`}
+          sx={{
+            background: "slategrey"
+          }}
         />
-        <Chip label={`Released: ${movie.release_date}`} />
+        <Chip label={`Released: ${movie.release_date}`} sx={{
+            background: "slategrey"
+          }}/>
       </Paper>
       <Paper 
         component="ul" 
-        sx={root}
+        sx={{
+          background: "#292828"
+        }}
       >
         <li>
           <Chip label="Production Countries" sx={chip} color="primary" />
         </li>
         {movie.production_countries.map((c) => (
           <li key={c.name}>
-            <Chip label={c.name} sx={chip} />
+            <Chip label={c.name} sx={{
+            background: "slategrey"
+          }} />
           </li>
         ))}
       </Paper>
       <Fab
-        color="secondary"
         variant="extended"
         onClick={() =>setDrawerOpen(true)}
         sx={{
           position: 'fixed',
           bottom: '1em',
-          right: '1em'
+          right: '1em',
+          background:"slategrey"
         }}
       >
         <NavigationIcon />
@@ -92,6 +120,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         <MovieReviews movie={movie} />
       </Drawer>
     </>
+    </Paper>
   );
 };
 export default MovieDetails ;

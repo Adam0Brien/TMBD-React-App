@@ -20,13 +20,16 @@ const MovieHeader = (props) => {
             flexWrap: "wrap",
             padding: 1.5,
             margin: 0,
+            backgroundColor: "#292828"
         }}
       >
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
-      <Typography variant="h4" component="h3">
+      <Typography variant="h4" component="h3" sx={{
+            color: "white"
+          }}>
         {movie.title}
         <a href={movie.homepage}>
           <HomeIcon color="primary" />

@@ -3,6 +3,7 @@ import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
+import { Paper } from "@mui/material";
 
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -23,6 +24,11 @@ function MovieListPageTemplate({ movies, title, action }) {
   };
 
   return (
+    <Paper sx={{
+      background: "#292828" 
+
+
+    }}>
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
         <Header title={title} />
@@ -38,6 +44,7 @@ function MovieListPageTemplate({ movies, title, action }) {
         <MovieList action={action} movies={displayedMovies}></MovieList>
       </Grid>
     </Grid>
+    </Paper>
   );
 }
 export default MovieListPageTemplate;
