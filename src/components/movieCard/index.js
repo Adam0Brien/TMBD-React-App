@@ -15,6 +15,7 @@ import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import { MoviesContext } from "../../contexts/moviesContext";
+import WatchLaterIcon from "@mui/icons-material/Visibility";
 
 
 
@@ -34,11 +35,11 @@ export default function MovieCard({ movie, action }) {
      addToFavourites(movie);
    };
 
-  //  if (mustWatch.find((id) => id === movie.id)) {
-  //   movie.mustWatch = true;
-  // } else {
-  //   movie.mustWatch = false
-  // }
+   if (mustWatch.find((id) => id === movie.id)) {
+    movie.mustWatch = true;
+  } else {
+    movie.mustWatch = false
+  }
 
    const handleAddToMustWatch = (e) => {
     e.preventDefault();
@@ -52,13 +53,16 @@ export default function MovieCard({ movie, action }) {
           <CardHeader
         avatar={
           movie.favourite ? (
-            <Avatar sx={
-              { backgroundColor: 'red' }
-              }>
+            <Avatar sx={{ backgroundColor: 'red' }}>
               <FavoriteIcon />
+            </Avatar>
+          ) : movie.mustWatch ? (
+            <Avatar sx={{ backgroundColor: 'purple' }}>
+              <WatchLaterIcon />
             </Avatar>
           ) : null
         }
+        
         title={
           <Typography variant="h5" component="p" sx={{
             color: "white"

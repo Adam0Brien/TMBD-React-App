@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@mui/material/IconButton";
-//import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
-const AddToMustWatch = ({ movie }) => {
+const AddToMustWatchIcon = ({ movie }) => {
   const context = useContext(MoviesContext);
 
   const handleAddToMustWatch = (e) => {
     e.preventDefault();
-    context.AddToMustWatch(movie);
+    context.addToMustWatch(movie);
   };
 
   return (
@@ -19,4 +18,5 @@ const AddToMustWatch = ({ movie }) => {
   );
 };
 
-export default AddToMustWatch;
+export default AddToMustWatchIcon;
+

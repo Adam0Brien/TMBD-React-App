@@ -4,12 +4,7 @@ import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner'
-//import RemoveFromFavouritesIcon from "../components/cardIcons/removeFromFavourites";
-import WriteReviewIcon from "../components/cardIcons/writeReview";
-//import AddToMustWatch from "../components/cardIcons/addToMustWatch";
-
-
-
+import RemoveFromMustWatch from "../components/cardIcons/removeFromMustWatch";
 
 const MustWatchMoviesPage = () => {
   const {mustWatch: movieIds } = useContext(MoviesContext);
@@ -35,8 +30,6 @@ const MustWatchMoviesPage = () => {
     return q.data
   });
 
-  //const toDo = () => true;
-  
   return (
     <PageTemplate
       title="Must Watch Movies"
@@ -44,7 +37,7 @@ const MustWatchMoviesPage = () => {
       action={(movie) => {
         return (
           <>
-            <WriteReviewIcon movie={movie} />
+            <RemoveFromMustWatch movie={movie} />
           </>
         );
       }}
@@ -52,15 +45,4 @@ const MustWatchMoviesPage = () => {
   );
 };
 
-
-// return (
-//     <PageTemplate
-//       title="Discover Movies"
-//       movies={movies}
-//       action={(movie) => {
-//         return <AddToMustWatch movie={movie} />
-//       }}
-//     />
-// );
-// };
 export default MustWatchMoviesPage;

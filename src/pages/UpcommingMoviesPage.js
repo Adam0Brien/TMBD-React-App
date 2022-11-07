@@ -7,6 +7,7 @@ import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
 
+
 const UpcommingMoviesPage = (props) => {
 
   const {  data, error, isLoading, isError }  = useQuery('upcomming', getUpcommingMovies)
@@ -21,9 +22,9 @@ const UpcommingMoviesPage = (props) => {
   const movies = data.results;
 
   // Redundant, but necessary to avoid app crashing.
-  const mustWatch = movies.filter(m => m.favourite)
-  localStorage.setItem('mustWatch', JSON.stringify(mustWatch))
-  const addTomustWatch = (movieId) => true 
+  // const mustWatch = movies.filter(m => m.favourite)
+  // localStorage.setItem('mustWatch', JSON.stringify(mustWatch))
+  // const addToMustWatch = (movieId) => true 
 
   return (
     <PageTemplate
