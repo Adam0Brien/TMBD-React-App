@@ -1,14 +1,14 @@
 import React from "react";
-import { getTrendingMovies } from "../api/tmdb-api";
+import { getTopMovies } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 
 
-const TrendingMoviesPage = (props) => {
+const TopMoviesPage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getTrendingMovies)
+  const {  data, error, isLoading, isError }  = useQuery('discover', getTopMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -26,7 +26,7 @@ const TrendingMoviesPage = (props) => {
 
   return (
     <PageTemplate
-      title="Trending Movies"
+      title="Top Movies"
       movies={movies}
       action={(movie) => {
         return <AddToFavouritesIcon movie={movie} />
@@ -36,4 +36,4 @@ const TrendingMoviesPage = (props) => {
 };
 
 
-export default TrendingMoviesPage;
+export default TopMoviesPage;
