@@ -71,9 +71,6 @@ export const getNowPlayingMovies = () => {
 };
 
 
-
-
-
 export const getMovie = (args) => {
   // console.log(args)
   const [, idPart] = args.queryKey;
@@ -138,9 +135,11 @@ export const getMovieReviews = (id) => {
     });
 };
 
-export const getActorReviews = (id) => {
+
+
+export const getSimilarMovies = (id) => {
   return fetch(
-    `https://api.themoviedb.org/3/actor/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
   )
     .then((res) => res.json())
     .then((json) => {

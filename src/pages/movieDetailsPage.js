@@ -7,6 +7,7 @@ import { getMovie } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 import { Paper } from "@mui/material";
+import SimilarMovies from "../components/similarMovies";
 
 
 const MovieDetailsPage = (props) => {
@@ -31,7 +32,7 @@ const MovieDetailsPage = (props) => {
         <>
           <PageTemplate movie={movie} >
             <MovieDetails movie={movie} />
-            <Paper movie={movie.video} />
+            <SimilarMovies movie={movie} />
           </PageTemplate>
         </>
       ) : (
