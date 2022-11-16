@@ -99,7 +99,7 @@ export default function ShowCard({ show, action }) {
       </CardContent>
       <CardActions disableSpacing>
       {action(show)}
-        <Link to={`/tv/${show.id}`}>
+        <Link to={`/shows/${show.id}`}>
           <Button variant="outlined" size="medium" sx={{
             color: "white"
           }}>
