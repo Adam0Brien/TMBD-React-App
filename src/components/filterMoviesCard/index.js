@@ -25,7 +25,7 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)"
   };
 
-  export default function FilterShowsCard(props) {
+  export default function FilterMoviesCard(props) {
     const { data, error, isLoading, isError } = useQuery("showGenres", getShowGenres);
   
     if (isLoading) {
@@ -73,7 +73,7 @@ const formControl =
         }} >
           
           <SearchIcon fontSize="large"/>
-          Filter the shows.
+          Filter the movies.
         </Typography>
           <TextField
       sx={formControl}
@@ -113,13 +113,10 @@ const formControl =
           color: "white"
         }}>
           <SearchIcon fontSize="large" />
-          Filter the shows.
+          Filter the Movies.
           <br />
         </Typography>
       </CardContent>
     </Card>
   );
-
-
-  
 }
