@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import { getSimilarMovies } from "../../api/tmdb-api";
-import { excerpt } from "../../util";
+
 
 export default function SimilarMovies({ movie }) {
   const [movies, setMovies] = useState([]);
@@ -25,26 +25,28 @@ export default function SimilarMovies({ movie }) {
       <Table sx={{minWidth: 550}} aria-label="movies table">
         <TableHead>
           <TableRow>
-            <TableCell >Movie Name</TableCell>
+            <TableCell >Similar Movies</TableCell>
+            <TableCell> </TableCell>
+            <TableCell> </TableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody>
           {movies.map((r) => (
             <TableRow key={r.id}>
-              <TableCell component="th" scope="row">
-                {r.title}
-              </TableCell>
-              <TableCell >{excerpt(r.content)}</TableCell>
-              <TableCell >
+                
+             <TableCell component="th" scope="row">
               <Link
                   to={`/movies/${r.id}`}
                   state={{
                       movie: movie,
                   }}
                 >
-                  Movie Link
+                 {r.title}
                 </Link>
               </TableCell>
+              <TableCell>{r.overview}</TableCell>
+              <TableCell>{r.vote_average}/10</TableCell>
             </TableRow>
           ))}
         </TableBody>
