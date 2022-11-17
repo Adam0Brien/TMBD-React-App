@@ -14,37 +14,37 @@ import Grid from "@mui/material/Grid";
 import img from '../../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
-//import { MoviesContext } from "../../contexts/moviesContext";
+import { ShowsContext } from "../../../contexts/showsContext";
 import WatchLaterIcon from "@mui/icons-material/Visibility";
 
 
 
 
 export default function ShowCard({ show, action }) {
- // const { favourites, addToFavourites, mustWatch, addToMustWatch } = useContext(MoviesContext);
+  const { favouriteShows, addToFavouriteShows, mustWatchShows, addToMustWatchShows } = useContext(ShowsContext);
  
-//    if (favourites.find((id) => id === movie.id)) {
-//      movie.favourite = true;
-//    } else {
-//      movie.favourite = false
-//    }
+   if (favouriteShows.find((id) => id === show.id)) {
+     show.favouriteShows = true;
+   } else {
+     show.favouriteShows = false
+   }
    
  
-//    const handleAddToFavourite = (e) => {
-//      e.preventDefault();
-//      addToFavourites(movie);
-//    };
+   const handleAddToFavourite = (e) => {
+     e.preventDefault();
+     addToFavouriteShows(show);
+   };
 
-//    if (mustWatch.find((id) => id === movie.id)) {
-//     movie.mustWatch = true;
-//   } else {
-//     movie.mustWatch = false
-//   }
+   if (mustWatchShows.find((id) => id === show.id)) {
+    show.mustWatch = true;
+  } else {
+    show.mustWatch = false
+  }
 
-//    const handleAddToMustWatch = (e) => {
-//     e.preventDefault();
-//     addToMustWatch(movie);
-//   };
+   const handleAddToMustWatch = (e) => {
+    e.preventDefault();
+    addToMustWatchShows(show);
+  };
  
 
 
@@ -52,11 +52,11 @@ export default function ShowCard({ show, action }) {
     <Card sx={{ maxWidth: 345 , backgroundColor: "#292828",border: '3px solid rgba(255,255,255,1)' }}>
           <CardHeader
         avatar={
-          show.favourite ? (
+          show.favouriteShows ? (
             <Avatar sx={{ backgroundColor: 'red' }}>
               <FavoriteIcon />
             </Avatar>
-          ) : show.mustWatch ? (
+          ) : show.mustWatchShows ? (
             <Avatar sx={{ backgroundColor: 'purple' }}>
               <WatchLaterIcon />
             </Avatar>

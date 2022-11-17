@@ -17,6 +17,10 @@ import TrendingMoviesPage from './pages/topMoviesPage';
 import NowPlayingMoviesPage from './pages/nowPlayingMoviesPage';
 import ShowsPage from './pages/showsPage';
 import ShowDetailsPage from "./pages/showDetailsPage";
+import FavouriteShowsPage from './pages/favouriteShowsPage';
+import ShowsContextProvider from './contexts/showsContext';
+
+
 
 
 
@@ -28,6 +32,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />
+        <ShowsContextProvider>
         <MoviesContextProvider>
         <Routes>
         <Route exact path="/movies/upcomming" element={<UpcommingMoviesPage />} />
@@ -36,16 +41,19 @@ const App = () => {
         <Route exact path="/movies/top" element={<TrendingMoviesPage />} />
         <Route exact path="/movies/now-playing" element={<NowPlayingMoviesPage />} />
         <Route exact path="/shows" element={<ShowsPage />} />
+        <Route exact path="/shows/favourites" element={<FavouriteShowsPage />} />
         <Route exact path="/" element={<HomePage />} />
         
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
         <Route path="/shows/:id" element={<ShowDetailsPage />} />
+
         <Route path="*" element={ <Navigate to="/" /> } />
         <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
         <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
         
             </Routes>
         </MoviesContextProvider>
+        </ShowsContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
