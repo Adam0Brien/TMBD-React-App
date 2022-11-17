@@ -7,47 +7,46 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import { getMovieReviews } from "../../api/tmdb-api";
-import { excerpt } from "../../util";
+import { getSimilarMovies } from "../../../api/tmdb-api";
 
-export default function MovieReviews({ movie }) {
-  const [reviews, setReviews] = useState([]);
+
+export default function SimilarMovies({ movie }) {
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    getMovieReviews(movie.id).then((reviews) => {
-      setReviews(reviews);
+    getSimilarMovies(movie.id).then((movies) => {
+      setMovies(movies);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{minWidth: 550}} aria-label="reviews table">
+      <Table sx={{minWidth: 550}} aria-label="movies table">
         <TableHead>
           <TableRow>
-            <TableCell >Author</TableCell>
-            <TableCell align="center">Excerpt</TableCell>
-            <TableCell align="right">More</TableCell>
+            <TableCell >Similar Movies</TableCell>
+            <TableCell> </TableCell>
+            <TableCell> </TableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody>
-          {reviews.map((r) => (
+          {movies.map((r) => (
             <TableRow key={r.id}>
-              <TableCell component="th" scope="row">
-                {r.author}
-              </TableCell>
-              <TableCell >{excerpt(r.content)}</TableCell>
-              <TableCell >
+                
+             <TableCell component="th" scope="row">
               <Link
-                  to={`/reviews/${r.id}`}
+                  to={`/movies/${r.id}`}
                   state={{
-                      review: r,
                       movie: movie,
                   }}
                 >
-                  Full Review
+                 {r.title}
                 </Link>
               </TableCell>
+              <TableCell>{r.overview}</TableCell>
+              <TableCell>{r.vote_average}/10</TableCell>
             </TableRow>
           ))}
         </TableBody>

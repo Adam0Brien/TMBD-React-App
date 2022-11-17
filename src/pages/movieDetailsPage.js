@@ -1,13 +1,13 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import MovieDetails from "../components/movieDetails/";
-import PageTemplate from "../components/templateMoviePage";
+import MovieDetails from "../components/movieComponents/movieDetails/";
+import PageTemplate from "../components/movieComponents/templateMoviePage";
 // import useMovie from "../hooks/useMovie";   Redundant
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 import { Paper } from "@mui/material";
-import SimilarMovies from "../components/similarMovies";
+import SimilarMovies from "../components/movieComponents/similarMovies";
 
 
 const MovieDetailsPage = (props) => {

@@ -7,46 +7,47 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import { getSimilarMovies } from "../../api/tmdb-api";
+import { getMovieReviews } from "../../../api/tmdb-api";
+import { excerpt } from "../../../util";
 
-
-export default function SimilarMovies({ movie }) {
-  const [movies, setMovies] = useState([]);
+export default function MovieReviews({ movie }) {
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    getSimilarMovies(movie.id).then((movies) => {
-      setMovies(movies);
+    getMovieReviews(movie.id).then((reviews) => {
+      setReviews(reviews);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{minWidth: 550}} aria-label="movies table">
+      <Table sx={{minWidth: 550}} aria-label="reviews table">
         <TableHead>
           <TableRow>
-            <TableCell >Similar Movies</TableCell>
-            <TableCell> </TableCell>
-            <TableCell> </TableCell>
-            
+            <TableCell >Author</TableCell>
+            <TableCell align="center">Excerpt</TableCell>
+            <TableCell align="right">More</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {movies.map((r) => (
+          {reviews.map((r) => (
             <TableRow key={r.id}>
-                
-             <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row">
+                {r.author}
+              </TableCell>
+              <TableCell >{excerpt(r.content)}</TableCell>
+              <TableCell >
               <Link
-                  to={`/movies/${r.id}`}
+                  to={`/reviews/${r.id}`}
                   state={{
+                      review: r,
                       movie: movie,
                   }}
                 >
-                 {r.title}
+                  Full Review
                 </Link>
               </TableCell>
-              <TableCell>{r.overview}</TableCell>
-              <TableCell>{r.vote_average}/10</TableCell>
             </TableRow>
           ))}
         </TableBody>
