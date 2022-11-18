@@ -5,7 +5,7 @@ import { useQueries } from "react-query";
 import { getShow } from "../api/tmdb-api";
 import Spinner from '../components/spinner'
 import { Paper } from "@mui/material";
-//import RemoveFromFavouritesIcon from "../components/cardIcons/removeFromMovieFavourites";
+import RemoveFromFavouritesIcon from "../components/cardIcons/removeShowsFromFavourites";
 //import WriteReviewIcon from "../components/cardIcons/writeMovieReview";
 
 
@@ -45,8 +45,8 @@ const FavouriteShowsPage = () => {
         return (
           <>
           <Paper />
-            {/* <RemoveFromFavouritesIcon movie={movie} />
-            <WriteReviewIcon movie={movie} /> */}
+            <RemoveFromFavouritesIcon show={show} />
+            {/* <WriteReviewIcon movie={show} /> */}
           </>
         );
       }}

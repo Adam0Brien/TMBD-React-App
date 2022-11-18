@@ -4,7 +4,7 @@ import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner'
-import RemoveFromFavouritesIcon from "../components/cardIcons/removeFromFavourites";
+import RemoveFromFavouritesIcon from "../components/cardIcons/removeMoviesFromFavourites";
 import WriteReviewIcon from "../components/cardIcons/writeReview";
 
 
