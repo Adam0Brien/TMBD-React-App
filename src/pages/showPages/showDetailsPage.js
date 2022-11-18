@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import ShowDetails from "../components/showComponents/showDetails/";
-import PageTemplate from "../components/showComponents/templateShowPage";
+import ShowDetails from "../../components/showComponents/showDetails/";
+import PageTemplate from "../../components/showComponents/templateShowPage";
  //import useMovie from "../hooks/useMovie";   Redundant
-import { getShow } from '../api/tmdb-api'
+import { getShow } from '../../api/tmdb-api'
 import { useQuery } from "react-query";
-import Spinner from '../components/spinner'
+import Spinner from '../../components/spinner'
 import { Paper } from "@mui/material";
 //import SimilarMovies from "../components/similarMovies";
 

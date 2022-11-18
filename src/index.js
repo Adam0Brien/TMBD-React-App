@@ -3,21 +3,21 @@ import React from "react";
 import {createRoot} from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
-import MovieDetailsPage from "./pages/movieDetailsPage";
-import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
-import UpcommingMoviesPage from './pages/UpcommingMoviesPage'; //new
+import MovieDetailsPage from "./pages/moviePages/movieDetailsPage";
+import FavouriteMoviesPage from './pages/moviePages/favouriteMoviesPage';
+import UpcommingMoviesPage from './pages/moviePages/UpcommingMoviesPage'; //new
 import {Link} from 'react-router-dom'
-import MovieReviewPage from "./pages/movieReviewPage";
+import MovieReviewPage from './pages/moviePages/movieReviewPage';
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
-import AddMovieReviewPage from './pages/addMovieReviewPage'
-import MustWatchMoviesPage from "./pages/mustWatchMoviesPage"; // NEW
-import TrendingMoviesPage from './pages/topMoviesPage';
-import NowPlayingMoviesPage from './pages/nowPlayingMoviesPage';
-import ShowsPage from './pages/showsPage';
-import ShowDetailsPage from "./pages/showDetailsPage";
-import FavouriteShowsPage from './pages/favouriteShowsPage';
+import AddMovieReviewPage from './pages/moviePages/addMovieReviewPage'
+import MustWatchMoviesPage from './pages/moviePages/mustWatchMoviesPage';
+import TrendingMoviesPage from './pages/moviePages/topMoviesPage';
+import NowPlayingMoviesPage from './pages/moviePages/nowPlayingMoviesPage';
+import ShowsPage from './pages/showPages/showsPage';
+import ShowDetailsPage from "./pages/showPages/showDetailsPage";
+import FavouriteShowsPage from './pages/showPages/favouriteShowsPage';
 import ShowsContextProvider from './contexts/showsContext';
 import './app.css';
 

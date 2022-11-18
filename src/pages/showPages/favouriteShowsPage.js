@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import PageTemplate from "../components/showComponents/templateShowListPage";
-import { ShowsContext } from "../contexts/showsContext";
+import PageTemplate from "../../components/showComponents/templateShowListPage";
+import { ShowsContext } from "../../contexts/showsContext";
 import { useQueries } from "react-query";
-import { getShow } from "../api/tmdb-api";
-import Spinner from '../components/spinner'
+import { getShow } from "../../api/tmdb-api";
+import Spinner from '../../components/spinner'
 import { Paper } from "@mui/material";
-import RemoveFromFavouritesIcon from "../components/cardIcons/removeShowsFromFavourites";
+import RemoveFromFavouritesIcon from "../../components/cardIcons/removeShowsFromFavourites";
 //import WriteReviewIcon from "../components/cardIcons/writeMovieReview";
 
 
