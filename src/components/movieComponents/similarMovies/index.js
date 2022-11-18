@@ -35,7 +35,7 @@ export default function SimilarMovies({ movie }) {
       <Table sx={{minWidth: 550}} aria-label="movies table">
         <TableHead>
           <TableRow>
-            <TableCell  sx={{tableCellStyle}} >Similar Movies</TableCell>        
+            <TableCell  sx={{backgroundColor: "#292828" ,color:"white"}} >Similar Movies</TableCell>        
           </TableRow>
         </TableHead>
         <TableBody>
