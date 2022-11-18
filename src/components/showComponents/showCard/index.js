@@ -45,7 +45,6 @@ export default function ShowCard({ show, action }) {
     e.preventDefault();
     addToMustWatchShows(show);
   };
- 
 
 
   return (

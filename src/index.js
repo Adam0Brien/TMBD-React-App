@@ -19,6 +19,7 @@ import ShowsPage from './pages/showsPage';
 import ShowDetailsPage from "./pages/showDetailsPage";
 import FavouriteShowsPage from './pages/favouriteShowsPage';
 import ShowsContextProvider from './contexts/showsContext';
+import './app.css';
 
 
 
