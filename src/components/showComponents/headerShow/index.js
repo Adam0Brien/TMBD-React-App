@@ -26,6 +26,7 @@ const ShowHeader = (props) => {
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
+      
       <p>
       <a href={show.homepage}>
           <HomeIcon color="primary" />

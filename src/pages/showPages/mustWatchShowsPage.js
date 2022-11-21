@@ -4,18 +4,13 @@ import { ShowsContext } from "../../contexts/showsContext";
 import { useQueries } from "react-query";
 import { getShow } from "../../api/tmdb-api";
 import Spinner from '../../components/spinner'
-import { Paper } from "@mui/material";
-import RemoveFromFavouritesIcon from "../../components/cardIcons/removeShowsFromFavourites";
-//import WriteReviewIcon from "../components/cardIcons/writeMovieReview";
+import RemoveFromMustWatch from "../../components/cardIcons/removeShowFromMustWatch";
 
-
-
-
-const FavouriteShowsPage = () => {
-  const {favouriteShows: showIds } = useContext(ShowsContext);
+const MustWatchShowsPage = () => {
+  const {mustWatchShows: showIds } = useContext(ShowsContext);
 
   // Create an array of queries and run in parallel.
-  const favouriteShowQueries = useQueries(
+  const mustWatchShowQueries = useQueries(
     showIds.map((showId) => {
       return {
         queryKey: ["show", { id: showId }],
@@ -24,29 +19,25 @@ const FavouriteShowsPage = () => {
     })
   );
   // Check if any of the parallel queries is still loading.
-  const isLoading = favouriteShowQueries.find((m) => m.isLoading === true);
+  const isLoading = mustWatchShowQueries.find((m) => m.isLoading === true);
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  const shows = favouriteShowQueries.map((q) => {
-    q.data.genres = q.data.genres.map(g => g.id)
+  const shows = mustWatchShowQueries.map((q) => {
+    q.data.genre_ids = q.data.genres.map(g => g.id)
     return q.data
   });
 
-  //const toDo = () => true;
-  
   return (
     <PageTemplate
-      name="Favourite TV Shows"
+      name="Must Watch TV Shows"
       shows={shows}
       action={(show) => {
         return (
           <>
-          <Paper />
-            <RemoveFromFavouritesIcon show={show} />
-            {/* <WriteReviewIcon movie={show} /> */}
+            <RemoveFromMustWatch show={show} />
           </>
         );
       }}
@@ -54,4 +45,4 @@ const FavouriteShowsPage = () => {
   );
 };
 
-export default FavouriteShowsPage;
+export default MustWatchShowsPage;

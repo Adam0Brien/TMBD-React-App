@@ -36,9 +36,9 @@ export default function ShowCard({ show, action }) {
    };
 
    if (mustWatchShows.find((id) => id === show.id)) {
-    show.mustWatch = true;
+    show.mustWatchShows = true;
   } else {
-    show.mustWatch = false
+    show.mustWatchShows = false
   }
 
    const handleAddToMustWatch = (e) => {

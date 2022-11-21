@@ -18,6 +18,7 @@ import NowPlayingMoviesPage from './pages/moviePages/nowPlayingMoviesPage';
 import ShowsPage from './pages/showPages/showsPage';
 import ShowDetailsPage from "./pages/showPages/showDetailsPage";
 import FavouriteShowsPage from './pages/showPages/favouriteShowsPage';
+import MustWatchShowsPage from './pages/showPages/mustWatchShowsPage';
 import ShowsContextProvider from './contexts/showsContext';
 import './app.css';
 
@@ -43,6 +44,8 @@ const App = () => {
         <Route exact path="/movies/now-playing" element={<NowPlayingMoviesPage />} />
         <Route exact path="/shows" element={<ShowsPage />} />
         <Route exact path="/shows/favourites" element={<FavouriteShowsPage />} />
+        <Route exact path="/shows/mustwatch" element={<MustWatchShowsPage />} />
+
         <Route exact path="/" element={<HomePage />} />
         
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
