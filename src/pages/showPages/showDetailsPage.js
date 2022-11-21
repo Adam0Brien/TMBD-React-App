@@ -7,6 +7,7 @@ import { getShow } from '../../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../../components/spinner'
 import { Paper } from "@mui/material";
+import SimilarShows from "../../components/showComponents/similarShows";
 //import SimilarMovies from "../components/similarMovies";
 
 
@@ -32,7 +33,7 @@ const ShowDetailsPage = (props) => {
         <>
           <PageTemplate show={show} >
             <ShowDetails show={show} />
-            
+            <SimilarShows show={show} />
           </PageTemplate>
         </>
       ) : (
