@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { getUpcommingMovies } from "../../api/tmdb-api";
 import PageTemplate from '../../components/movieComponents/templateMovieListPage';
 import { useQuery } from 'react-query';
@@ -6,11 +6,19 @@ import Spinner from '../../components/spinner';
 import AddToFavouritesIcon from '../../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import AddToMustWatchIcon from "../../components/cardIcons/addToMustWatch";
+import { MoviesContext } from "../../contexts/moviesContext";
+import { useParams } from "react-router-dom"
+
 
 
 const UpcommingMoviesPage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('upcomming', getUpcommingMovies)
+  const {setPageNumber, setMovieType} = useContext(MoviesContext);
+  const {pageNumber} = useParams();
+
+  const {  data, error, isLoading, isError }  = useQuery([`upcomming`,{pageNum:pageNumber}], getUpcommingMovies)
+  setPageNumber(pageNumber);
+  setMovieType('upcomming')
 
   if (isLoading) {
     return <Spinner />

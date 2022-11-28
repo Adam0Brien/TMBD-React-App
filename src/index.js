@@ -13,7 +13,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/moviePages/addMovieReviewPage'
 import MustWatchMoviesPage from './pages/moviePages/mustWatchMoviesPage';
-import TrendingMoviesPage from './pages/moviePages/topMoviesPage';
+import TopMoviesPage from './pages/moviePages/topMoviesPage';
 import NowPlayingMoviesPage from './pages/moviePages/nowPlayingMoviesPage';
 import ShowsPage from './pages/showPages/showsPage';
 import ShowDetailsPage from "./pages/showPages/showDetailsPage";
@@ -21,13 +21,6 @@ import FavouriteShowsPage from './pages/showPages/favouriteShowsPage';
 import MustWatchShowsPage from './pages/showPages/mustWatchShowsPage';
 import ShowsContextProvider from './contexts/showsContext';
 import './app.css';
-
-
-
-
-
-
-
 
 const App = () => {
   return (
@@ -37,21 +30,22 @@ const App = () => {
         <ShowsContextProvider>
         <MoviesContextProvider>
         <Routes>
-        <Route exact path="/movies/upcomming" element={<UpcommingMoviesPage />} />
+        <Route exact path="/movies/upcomming/page=:pageNumber" element={<UpcommingMoviesPage />} />
         <Route exact path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
-        <Route exact path="/movies/top" element={<TrendingMoviesPage />} />
-        <Route exact path="/movies/now-playing" element={<NowPlayingMoviesPage />} />
+        <Route exact path="/movies/top/page=:pageNumber" element={<TopMoviesPage />} />
+        <Route exact path="/movies/now-playing/page=:pageNumber" element={<NowPlayingMoviesPage />} />
         <Route exact path="/shows" element={<ShowsPage />} />
         <Route exact path="/shows/favourites" element={<FavouriteShowsPage />} />
         <Route exact path="/shows/mustwatch" element={<MustWatchShowsPage />} />
 
-        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/page=:pageNumber" element={<HomePage />} />
+        
         
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
         <Route path="/shows/:id" element={<ShowDetailsPage />} />
 
-        <Route path="*" element={ <Navigate to="/" /> } />
+        <Route path="*" element={ <Navigate to="/page=1" /> } />
         <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
         <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
         

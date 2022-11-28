@@ -1,6 +1,9 @@
-export const getMovies = () => {
+export const getMovies = (args) => {
+
+  const [, pageIdPart] = args.queryKey;
+  const { pageNum } = pageIdPart;
   return fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${pageNum}`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -13,9 +16,12 @@ export const getMovies = () => {
 };
 
 
-export const getUpcommingMovies = (p) => {
+export const getUpcommingMovies = (args) => {
+  
+  const [, pageIdPart] = args.queryKey;
+  const { pageNum } = pageIdPart;
   return fetch(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=${p}`
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=${pageNum}`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -28,9 +34,12 @@ export const getUpcommingMovies = (p) => {
 };
 
 
-export const getTopMovies = () => {
+export const getTopMovies = (args) => {
+
+  const [, pageIdPart] = args.queryKey;
+  const { pageNum } = pageIdPart;
   return fetch(
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${pageNum}`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -42,9 +51,11 @@ export const getTopMovies = () => {
   });
 };
 
-export const getNowPlayingMovies = () => {
+export const getNowPlayingMovies = (args) => {
+  const [, pageIdPart] = args.queryKey;
+  const { pageNum } = pageIdPart;
   return fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${pageNum}`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -142,7 +153,7 @@ export const getSimilarMovies = (id) => {
 
 export const getShows = () => {
   return fetch(
-    `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=3`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);

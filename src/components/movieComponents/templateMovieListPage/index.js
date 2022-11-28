@@ -4,6 +4,8 @@ import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
 import { Paper } from "@mui/material";
+import PaginationOutlined from "../footer";
+
 
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -44,6 +46,7 @@ function MovieListPageTemplate({ movies, title, action }) {
         <MovieList action={action} movies={displayedMovies}></MovieList>
       </Grid>
     </Grid>
+    <PaginationOutlined></PaginationOutlined>
     </Paper>
   );
 }
