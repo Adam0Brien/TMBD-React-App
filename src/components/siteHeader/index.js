@@ -10,7 +10,12 @@ import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+
+
 
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
@@ -94,17 +99,100 @@ const SiteHeader = ({ history }) => {
                 </Menu>
               </>
             ) : (
-              <>
-                {menuOptions.map((opt) => (
-                  <Button
-                    key={opt.label}
-                    color="inherit"
-                    onClick={() => handleMenuSelect(opt.path)}
-                  >
-                    {opt.label}
-                  </Button>
-                ))}
-              </>
+              // <>
+              //   {menuOptions.map((opt) => (
+              //     <Button
+              //       key={opt.label}
+              //       color="inherit"
+              //       onClick={() => handleMenuSelect(opt.path)}
+              //     >
+              //       {opt.label}
+              //     </Button>
+              //   ))}
+              // </>
+              <div>
+              <PopupState variant="popover" popupId="movie-menu">
+                {(popupState) => (
+                  <React.Fragment>
+                    <Button variant="contained" {...bindTrigger(popupState)}>
+                      Movies
+                    </Button>
+                    <Menu {...bindMenu(popupState)}>
+                      <Link to={"/page=1"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Discover</MenuItem>
+                      </Link>
+                      <Link to={"/movies/top/page=1"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Top Movies</MenuItem>
+                      </Link>
+                      <Link to={"/movies/upcomming/page=1"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Upcomming</MenuItem>
+                      </Link>
+                      <Link to={"/movies/now-playing/page=1"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >In Cinema</MenuItem>
+                      </Link>
+                      <Link to={"/movies/favourites"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Favourites</MenuItem>
+                      </Link>
+                      <Link to={"/movies/mustwatch"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Must Watch</MenuItem>
+                      </Link>
+                    </Menu>
+
+                    </React.Fragment>
+                  )}
+                </PopupState>
+
+                <PopupState variant="popover" popupId="movie-menu">
+                {(popupState) => (
+                  <React.Fragment>
+                    <Button variant="contained" {...bindTrigger(popupState)}>
+                      Shows
+                    </Button>
+                    <Menu {...bindMenu(popupState)}>
+                      <Link to={"/shows"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Tv Shows</MenuItem>
+                      </Link>
+                      <Link to={"/shows/favourites"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Favourite Shows</MenuItem>
+                      </Link>
+                      <Link to={"/shows/mustwatch"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Must Watch Shows</MenuItem>
+                      </Link>
+                      
+                    </Menu>
+
+                    </React.Fragment>
+                  )}
+                </PopupState>
+
+
+                <PopupState variant="popover" popupId="movie-menu">
+                {(popupState) => (
+                  <React.Fragment>
+                    <Button variant="contained" {...bindTrigger(popupState)}>
+                      My Fantasy Movie
+                    </Button>
+                    <Menu {...bindMenu(popupState)}>
+                      <Link to={"/shows"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Todo</MenuItem>
+                      </Link>
+                      <Link to={"/shows/favourites"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Todo</MenuItem>
+                      </Link>
+                      <Link to={"/shows/mustwatch"} style={{textDecoration: "none"}}>
+                      <MenuItem onClick={popupState.close} >Todo</MenuItem>
+                      </Link>
+                      
+                    </Menu>
+
+                    </React.Fragment>
+                  )}
+                </PopupState>
+                </div>
+
+
+
+           
             )}
         </Toolbar>
       </AppBar>
